@@ -67,3 +67,21 @@ LOCAL_LDLIBS :=
 LOCAL_EXPORT_LDLIBS := -Wl,--undefined=Java_org_libsdl_app_SDLActivity_nativeInit -ldl -lGLESv1_CM -lGLESv2 -llog -landroid
 
 include $(BUILD_STATIC_LIBRARY)
+
+###########################
+include $(CLEAR_VARS)
+
+LOCAL_MODULE := main
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/include \
+
+LOCAL_EXPORT_C_INCLUDES := $(LOCAL_C_INCLUDES)
+
+# Add your application source files here...
+LOCAL_SRC_FILES := $(LOCAL_PATH)/src/main/android/SDL_android_main.c \
+	main.cpp
+
+LOCAL_SHARED_LIBRARIES := SDL2
+
+LOCAL_LDLIBS := -lGLESv1_CM -lGLESv2 -llog
+
+include $(BUILD_SHARED_LIBRARY)
